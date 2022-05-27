@@ -18,7 +18,7 @@ jobs:
       - run: edgedb instance list
       - run: edgedb instance list --json | jq -r '.[].name' | xargs -i edgedb instance destroy --non-interactive --force {}
       - run: edgedb instance list
-      - run: edgedb project init --non-interactive --start-conf=manual --server-instance=tests
+      - run: edgedb project init --non-interactive --server-start-conf=manual --server-instance=tests
         working-directory: tests
       - run: edgedb instance start tests
         working-directory: tests

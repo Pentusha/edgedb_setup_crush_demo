@@ -18,7 +18,9 @@ jobs:
       - run: edgedb instance list
       - run: edgedb instance list --json | jq -r '.[].name' | xargs -i edgedb instance destroy --non-interactive --force {}
       - run: edgedb instance list
-      - run: edgedb project init --non-interactive
+      - run: edgedb project init --non-interactive --start-conf=manual --server-instance=tests
+        working-directory: tests
+      - run: edgedb instance start tests
         working-directory: tests
       - run: edgedb instance list
       - name: Set up python
